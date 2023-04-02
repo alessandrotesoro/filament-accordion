@@ -14,6 +14,8 @@ class Accordions extends Component
 
     protected string $view = 'filament-accordion::forms.components.fields.accordions';
 
+    protected bool|null $open = false;
+
     final public function __construct(string $label)
     {
         $this->label($label);
@@ -25,6 +27,26 @@ class Accordions extends Component
         $static->configure();
 
         return $static;
+    }
+
+    /**
+     * Set 1st accordion as open on page load.
+     *
+     * @param  bool  $open
+     */
+    public function open(bool|null $open = false): static
+    {
+        $this->open = $open;
+
+        return $this;
+    }
+
+    /**
+     * Determine if the 1st accordion should be open by default.
+     */
+    public function isOpen(): bool|null
+    {
+        return $this->open === true;
     }
 
     public function accordions(array|Closure $accordions): static

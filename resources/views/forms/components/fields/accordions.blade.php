@@ -2,6 +2,7 @@
     $isCompact = $isCompact();
     $childCount = count($getChildComponentContainer()->getComponents());
     $isDarkMode = config('forms.dark_mode');
+    $isOpen = $isOpen();
 @endphp
 
 <div id="{{ $getId() }}"
@@ -29,7 +30,7 @@
     </div>
 
     <div class="filament-forms-accordions-content-wrapper">
-        <div x-data="{ selected: 0 }">
+        <div x-data="{ selected: '{{ $isOpen ? 0 : -1 }}' }">
             <ul class="shadow-box">
                 @foreach ($getChildComponentContainer()->getComponents() as $key => $accordion)
                     <li @class([
