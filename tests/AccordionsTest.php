@@ -27,3 +27,10 @@ it('can have child components', function () {
 
     expect(count($accordions->getChildComponents()))->toBe(1);
 });
+
+it('can be open by default', function () {
+    $accordions = Accordions::make('Label here');
+    $accordions->open(true);
+
+    expect($accordions->isOpen())->toBeTrue();
+});
